@@ -68,7 +68,7 @@ public class Algorithms {
 
 	public static List<Double> sortScores(List<Double> results) {
 		// TODO Auto-generated method stub
-		
+
 		for (int i = 0; i < results.size(); i++) {
 			double smallest = 999;
 			int smallestI = 999;
@@ -83,42 +83,60 @@ public class Algorithms {
 
 			}
 			Collections.swap(results, smallestI, i);
-			System.out.println(results);
+			// System.out.println(results);
 		}
 
-		
 		return results;
 
 	}
 
 	public static Object sortDNA(List<String> unsortedSequences) {
 		// TODO Auto-generated method stub
-		
-		for (int i = 0; i < unsortedSequences.size(); i++) {
-			
-			String smallest = unsortedSequences.get(0);
-			
-			int smallestI = 0;
-
-			for (int j = i; j < unsortedSequences.size(); j++) {
-
-				if (unsortedSequences.get(j).length() <= smallest.length()) {
-					smallest = unsortedSequences.get(j);
-					smallestI = j;
-
+		int numSwaps = 1;
+		while (numSwaps > 0) {
+			numSwaps = 0;
+			System.out.println("(:");
+			for (int i = 0; i < unsortedSequences.size() - 1; i++) {
+				if (unsortedSequences.get(i).length() > unsortedSequences.get(i + 1).length()) {
+					Collections.swap(unsortedSequences, i, i + 1);
+					numSwaps++;
 				}
 
 			}
-			Collections.swap(unsortedSequences, smallestI, i);
-			System.out.println(unsortedSequences);
+
 		}
 
-		
+		System.out.println(unsortedSequences);
+
 		return unsortedSequences;
 
 	}
 
+	public static List<String> sortWords(List<String> words) {
+		// TODO Auto-generated method stub
+		int numSwaps = 1;
+		int length = words.size() - 1;
+		while (numSwaps > 0) {
+			numSwaps = 0;
+
+			for (int i = 0; i < length; i++) {
+
+				if (words.get(i).compareTo(words.get(i + 1)) > 0) {
+					Collections.swap(words, i, i + 1);
+					numSwaps++;
+
+				}
+
+			}
+			length = length - 1;
+		}
+
+		System.out.println(words);
+
+		return words;
+
 	}
 
-	// Add other methods here
+}
 
+// Add other methods here
